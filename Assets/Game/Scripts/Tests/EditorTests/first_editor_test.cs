@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-public class first_editor_test_script
+public class first_editor_test
 {
     // edit mode test
     [Test]
