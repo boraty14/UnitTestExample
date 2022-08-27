@@ -1,6 +1,7 @@
 using Game.Scripts.Abstracts.Controllers;
 using Game.Scripts.Abstracts.Inputs;
 using Game.Scripts.Abstracts.Movement;
+using Game.Scripts.Abstracts.ScriptableObjects;
 using Game.Scripts.Concretes.Movement;
 using NSubstitute;
 using NUnit.Framework;
@@ -14,6 +15,9 @@ public class player_movement_editor
         GameObject gameObject = new GameObject();
         playerController.transform.Returns(gameObject.transform);
         playerController.InputReader = Substitute.For<IInputReader>();
+        playerController.Stats.Returns(Substitute.For<IPlayerStats>());
+        playerController.Stats.MoveSpeed.Returns(5f);
+        
         return playerController;
     }
 
