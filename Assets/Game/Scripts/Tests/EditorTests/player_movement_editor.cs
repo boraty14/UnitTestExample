@@ -6,7 +6,7 @@ using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
 
-public class player_movement
+public class player_movement_editor
 {
     private IPlayerController GetPlayer()
     {
@@ -23,24 +23,6 @@ public class player_movement
         return mover;
     }
 
-    [Test]
-    public void moveLeft10Units_equalEndPosition()
-    {
-        //Arrange
-        var playerController = GetPlayer();
-        var mover = GetMoverTranslate(playerController);
-
-        //Act
-        playerController.InputReader.Horizontal.Returns(1f);
-        for (int i = 0; i < 10; i++)
-        {
-            mover.Tick(); // input 
-            mover.FixedTick(); // act with input
-        }
-
-        //Assert
-        Assert.AreEqual(new Vector3(10, 0, 0), playerController.transform.position);
-    }
 
     [Test]
     [TestCase(1f)]
