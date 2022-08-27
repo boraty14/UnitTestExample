@@ -17,16 +17,19 @@ namespace Game.Scripts.Concretes.Controllers
 
         [SerializeField] private PlayerStats _playerStats;
         private IMover _mover;
+        private IFlip _flip;
 
         private void Awake()
         {
             InputReader = new InputReaderHorizontal();
             _mover = new PlayerMovementTranslate(this);
+            _flip = new PlayerFlipScale(this);
         }
 
         private void Update()
         {
            _mover.Tick(); 
+           _flip.Tick();
         }
 
         private void FixedUpdate()
